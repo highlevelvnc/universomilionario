@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslation } from "@/lib/i18n";
+import { useReveal, useStagger } from "@/lib/animations";
 import type { TranslationKey } from "@/lib/translations/pt";
 
 const diffIcons = [
@@ -23,30 +24,33 @@ const diffKeys: { titleKey: TranslationKey; descKey: TranslationKey }[] = [
 
 export default function Differentials() {
   const { t } = useTranslation();
+  const headerRef = useReveal<HTMLDivElement>();
+  const gridRef = useStagger<HTMLDivElement>("[data-diff-card]", { stagger: 0.1, y: 50 });
+  const coverageRef = useStagger<HTMLDivElement>("[data-coverage]", { stagger: 0.15, y: 40 });
+  const ctaBannerRef = useReveal<HTMLDivElement>({ y: 50, delay: 0.1 });
 
   return (
     <section id="differentials" className="py-24 lg:py-32 bg-surface relative overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/3 rounded-full blur-[150px] pointer-events-none" />
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16 lg:mb-20">
+        <div ref={headerRef} className="text-center mb-16 lg:mb-20">
           <p className="text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-4">{t("diff.tag")}</p>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">{t("diff.title")}</h2>
           <p className="text-on-surface-variant max-w-2xl mx-auto text-lg">{t("diff.sub")}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {diffKeys.map((item, i) => (
-            <div key={item.titleKey} className="group bg-surface-container rounded-xl p-8 border border-outline-variant/8 hover:border-primary/20 transition-all duration-500 hover:bg-surface-container-high">
-              <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary/15 transition-colors duration-300">{diffIcons[i]}</div>
+            <div data-diff-card key={item.titleKey} className="group bg-surface-container rounded-xl p-8 border border-outline-variant/8 hover:border-primary/20 transition-all duration-500 hover:bg-surface-container-high hover:-translate-y-1">
+              <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-500">{diffIcons[i]}</div>
               <h3 className="text-xl font-bold mb-3 tracking-tight">{t(item.titleKey)}</h3>
               <p className="text-on-surface-variant leading-relaxed">{t(item.descKey)}</p>
             </div>
           ))}
         </div>
 
-        {/* Coverage Banner */}
-        <div className="mt-16 lg:mt-20 grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
-          <div className="bg-surface-container rounded-xl p-8 border border-outline-variant/8 flex items-center gap-5">
+        <div ref={coverageRef} className="mt-16 lg:mt-20 grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+          <div data-coverage className="bg-surface-container rounded-xl p-8 border border-outline-variant/8 flex items-center gap-5 hover:border-primary/20 transition-all duration-500">
             <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
               <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12.75 3.03v.568c0 .334.148.65.405.864a4.5 4.5 0 010 6.635.75.75 0 01-.405.864v.568M12.75 3.03A11.944 11.944 0 0112 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9a9.004 9.004 0 00-2.25-5.97" /></svg>
             </div>
@@ -55,7 +59,7 @@ export default function Differentials() {
               <p className="text-on-surface-variant text-sm">{t("diff.coverage1.desc")}</p>
             </div>
           </div>
-          <div className="bg-surface-container rounded-xl p-8 border border-outline-variant/8 flex items-center gap-5">
+          <div data-coverage className="bg-surface-container rounded-xl p-8 border border-outline-variant/8 flex items-center gap-5 hover:border-primary/20 transition-all duration-500">
             <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
               <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" /></svg>
             </div>
@@ -66,8 +70,7 @@ export default function Differentials() {
           </div>
         </div>
 
-        {/* CTA Banner */}
-        <div className="relative rounded-2xl overflow-hidden">
+        <div ref={ctaBannerRef} className="relative rounded-2xl overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary-dim/90 z-0" />
           <div className="absolute inset-0 bg-[url('/servico-6.jpg')] bg-cover bg-center opacity-10 z-0" />
           <div className="relative z-10 px-8 lg:px-16 py-12 lg:py-16 flex flex-col lg:flex-row items-center justify-between gap-8">

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useTranslation } from "@/lib/i18n";
+import { useReveal, useStagger } from "@/lib/animations";
 import type { TranslationKey } from "@/lib/translations/pt";
 
 const photos: { src: string; altKey: TranslationKey }[] = [
@@ -17,18 +18,20 @@ const photos: { src: string; altKey: TranslationKey }[] = [
 
 export default function Gallery() {
   const { t } = useTranslation();
+  const headerRef = useReveal<HTMLDivElement>();
+  const gridRef = useStagger<HTMLDivElement>("[data-gallery-item]", { stagger: 0.08, y: 40 });
 
   return (
     <section className="py-24 lg:py-32 bg-surface-container-low">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div ref={headerRef} className="text-center mb-16">
           <p className="text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-4">{t("gallery.tag")}</p>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">{t("gallery.title")}</h2>
           <p className="text-on-surface-variant max-w-2xl mx-auto text-lg">{t("gallery.sub")}</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
+        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
           {photos.map((photo, i) => (
-            <div key={photo.src} className={`relative overflow-hidden rounded-lg group cursor-pointer ${i === 0 || i === 5 ? "md:col-span-2 md:row-span-2" : ""}`}>
+            <div data-gallery-item key={photo.src} className={`relative overflow-hidden rounded-lg group cursor-pointer ${i === 0 || i === 5 ? "md:col-span-2 md:row-span-2" : ""}`}>
               <div className={`relative ${i === 0 || i === 5 ? "aspect-square" : "aspect-[4/3]"}`}>
                 <Image src={photo.src} alt={t(photo.altKey)} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

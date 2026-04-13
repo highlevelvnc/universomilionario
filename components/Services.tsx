@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useTranslation } from "@/lib/i18n";
+import { useReveal, useStagger } from "@/lib/animations";
 import type { TranslationKey } from "@/lib/translations/pt";
 
 const serviceIcons = [
@@ -20,31 +21,33 @@ const serviceData = [
 
 export default function Services() {
   const { t } = useTranslation();
+  const headerRef = useReveal<HTMLDivElement>();
+  const gridRef = useStagger<HTMLDivElement>("[data-service-card]", { stagger: 0.15, y: 60 });
 
   return (
     <section id="services" className="py-24 lg:py-32 bg-surface-container-low relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16 lg:mb-20">
+        <div ref={headerRef} className="text-center mb-16 lg:mb-20">
           <p className="text-xs uppercase tracking-[0.3em] text-primary font-semibold mb-4">{t("services.tag")}</p>
           <h2 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">{t("services.title")}</h2>
           <p className="text-on-surface-variant max-w-2xl mx-auto text-lg">{t("services.sub")}</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+        <div ref={gridRef} className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           {serviceData.map((service, i) => (
-            <div key={service.titleKey} className={`${service.span} group relative overflow-hidden rounded-xl bg-surface-container-high border border-outline-variant/8 hover:border-primary/30 transition-all duration-500`}>
+            <div data-service-card key={service.titleKey} className={`${service.span} group relative overflow-hidden rounded-xl bg-surface-container-high border border-outline-variant/8 hover:border-primary/30 transition-all duration-500`}>
               <div className="absolute inset-0 z-0">
                 <Image src={service.image} alt={t(service.titleKey)} fill className="object-cover opacity-[0.07] group-hover:opacity-[0.15] group-hover:scale-105 transition-all duration-700" />
               </div>
               <div className="relative z-10 p-8 lg:p-10 flex flex-col justify-between min-h-[320px]">
                 <div>
-                  <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6">{serviceIcons[i]}</div>
+                  <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform duration-500">{serviceIcons[i]}</div>
                   <h3 className={`font-bold mb-4 ${service.large ? "text-2xl lg:text-3xl" : "text-xl lg:text-2xl"}`}>{t(service.titleKey)}</h3>
                   <p className="text-on-surface-variant leading-relaxed max-w-md">{t(service.descKey)}</p>
                 </div>
                 <a href="#quote" className="inline-flex items-center gap-2 text-primary font-semibold mt-6 group-hover:gap-3 transition-all duration-300">
                   {t("services.cta")}
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </a>
               </div>
             </div>
