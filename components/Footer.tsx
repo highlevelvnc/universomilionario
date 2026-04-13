@@ -66,7 +66,7 @@ export default function Footer() {
         <div className="py-6 border-t border-outline-variant/8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-on-surface-variant/60 text-xs">&copy; {new Date().getFullYear()} Universo Milionário LDA. {t("footer.rights")}</p>
           <div className="flex gap-6">
-            <a href="#" className="text-on-surface-variant/60 text-xs hover:text-on-surface-variant transition-colors">{t("footer.privacy")}</a>
+            <a href="/privacidade" className="text-on-surface-variant/60 text-xs hover:text-on-surface-variant transition-colors">{t("footer.privacy")}</a>
             <a href="#" className="text-on-surface-variant/60 text-xs hover:text-on-surface-variant transition-colors">{t("footer.terms")}</a>
           </div>
         </div>

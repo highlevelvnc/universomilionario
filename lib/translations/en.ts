@@ -133,6 +133,31 @@ const en: Record<TranslationKey, string> = {
   "footer.rights": "All rights reserved.",
   "footer.privacy": "Privacy Policy",
   "footer.terms": "Terms & Conditions",
+
+  // Contact email
+  "contact.email.label": "Email",
+  "contact.email.value": "geral@universomilionario.pt",
+
+  // Testimonials
+  "test.tag": "Testimonials",
+  "test.title": "What Our Clients Say",
+  "test.sub": "Our clients' satisfaction is the best proof of our work quality.",
+  "test.t1.name": "João Mendes",
+  "test.t1.role": "Homeowner — Villa in Sintra",
+  "test.t1.text": "Universo Milionário exceeded all expectations. The project was delivered on time, with impeccable finishes. I recommend them without hesitation to anyone looking for quality and professionalism.",
+  "test.t2.name": "Ana Cardoso",
+  "test.t2.role": "Manager — Office in Amadora",
+  "test.t2.text": "We hired their post-construction cleaning and regular maintenance service. The team is punctual, professional, and the result is always impeccable. A partnership that's here to stay.",
+  "test.t3.name": "Ricardo Silva",
+  "test.t3.role": "Property Investor — Lisbon",
+  "test.t3.text": "I've worked with several construction companies and Universo Milionário stands out for budget transparency and technical rigour. Projects always delivered as agreed.",
+
+  // Cookie Banner
+  "cookie.title": "This site uses cookies",
+  "cookie.text": "We use essential cookies for the site to function. By continuing to browse, you agree to our",
+  "cookie.link": "Privacy Policy",
+  "cookie.accept": "Accept",
+  "cookie.decline": "Decline",
 };
 
 export default en;

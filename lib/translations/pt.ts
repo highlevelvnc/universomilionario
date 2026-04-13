@@ -131,6 +131,31 @@ const pt = {
   "footer.rights": "Todos os direitos reservados.",
   "footer.privacy": "Política de Privacidade",
   "footer.terms": "Termos e Condições",
+
+  // Contact email
+  "contact.email.label": "E-mail",
+  "contact.email.value": "geral@universomilionario.pt",
+
+  // Testimonials
+  "test.tag": "Testemunhos",
+  "test.title": "O Que Dizem os Nossos Clientes",
+  "test.sub": "A satisfação dos nossos clientes é a melhor prova da qualidade do nosso trabalho.",
+  "test.t1.name": "João Mendes",
+  "test.t1.role": "Proprietário — Moradia em Sintra",
+  "test.t1.text": "A Universo Milionário superou todas as expectativas. A obra foi entregue no prazo, com acabamentos impecáveis. Recomendo sem hesitar a quem procura qualidade e profissionalismo.",
+  "test.t2.name": "Ana Cardoso",
+  "test.t2.role": "Gestora — Escritório na Amadora",
+  "test.t2.text": "Contratámos o serviço de limpeza pós-obra e manutenção regular. A equipa é pontual, profissional e o resultado é sempre impecável. Uma parceria que veio para ficar.",
+  "test.t3.name": "Ricardo Silva",
+  "test.t3.role": "Investidor Imobiliário — Lisboa",
+  "test.t3.text": "Já trabalhei com várias empresas de construção e a Universo Milionário destaca-se pela transparência nos orçamentos e pelo rigor técnico. Projetos entregues sempre dentro do combinado.",
+
+  // Cookie Banner
+  "cookie.title": "Este site utiliza cookies",
+  "cookie.text": "Utilizamos cookies essenciais para o funcionamento do site. Ao continuar a navegar, concorda com a nossa",
+  "cookie.link": "Política de Privacidade",
+  "cookie.accept": "Aceitar",
+  "cookie.decline": "Recusar",
 } as const;
 
 export type TranslationKey = keyof typeof pt;

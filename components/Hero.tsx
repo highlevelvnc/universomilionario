@@ -4,12 +4,15 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useTranslation } from "@/lib/i18n";
-import { useMagnetic } from "@/lib/animations";
+import { useMagnetic, useCounter } from "@/lib/animations";
 
 export default function Hero() {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const ctaRef = useMagnetic<HTMLAnchorElement>(0.15);
+  const counter1 = useCounter<HTMLSpanElement>(500, { suffix: "+" });
+  const counter2 = useCounter<HTMLSpanElement>(15, { suffix: "+" });
+  const counter3 = useCounter<HTMLSpanElement>(100, { suffix: "%" });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -25,16 +28,10 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
-  const stats = [
-    { number: t("hero.stat1.number"), label: t("hero.stat1.label") },
-    { number: t("hero.stat2.number"), label: t("hero.stat2.label") },
-    { number: t("hero.stat3.number"), label: t("hero.stat3.label") },
-  ];
-
   return (
     <section id="home" ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden noise-overlay">
       <div className="absolute inset-0 z-0">
-        <Image src="/servico-3.jpg" alt="" fill className="object-cover opacity-20" priority quality={80} />
+        <Image src="/servico-3.jpg" alt="" fill className="object-cover opacity-30" priority quality={80} />
         <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface/85 to-surface" />
         <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-transparent" />
       </div>
@@ -67,12 +64,18 @@ export default function Hero() {
           </div>
 
           <div data-hero-stats className="mt-16 pt-8 border-t border-outline-variant/10 grid grid-cols-3 gap-8 max-w-lg">
-            {stats.map((stat) => (
-              <div key={stat.label}>
-                <p className="text-2xl sm:text-3xl font-extrabold text-primary">{stat.number}</p>
-                <p className="text-xs text-on-surface-variant mt-1 tracking-wide uppercase">{stat.label}</p>
-              </div>
-            ))}
+            <div>
+              <p className="text-2xl sm:text-3xl font-extrabold text-primary"><span ref={counter1}>0</span></p>
+              <p className="text-xs text-on-surface-variant mt-1 tracking-wide uppercase">{t("hero.stat1.label")}</p>
+            </div>
+            <div>
+              <p className="text-2xl sm:text-3xl font-extrabold text-primary"><span ref={counter2}>0</span></p>
+              <p className="text-xs text-on-surface-variant mt-1 tracking-wide uppercase">{t("hero.stat2.label")}</p>
+            </div>
+            <div>
+              <p className="text-2xl sm:text-3xl font-extrabold text-primary"><span ref={counter3}>0</span></p>
+              <p className="text-xs text-on-surface-variant mt-1 tracking-wide uppercase">{t("hero.stat3.label")}</p>
+            </div>
           </div>
         </div>
       </div>
