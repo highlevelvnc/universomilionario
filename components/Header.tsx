@@ -1,16 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslation, LanguageSwitcher } from "@/lib/i18n";
+import type { TranslationKey } from "@/lib/translations/pt";
 
-const navLinks = [
-  { label: "Início", href: "#home" },
-  { label: "Sobre Nós", href: "#about" },
-  { label: "Serviços", href: "#services" },
-  { label: "Porquê Nós", href: "#differentials" },
-  { label: "Contactos", href: "#contact" },
+const navKeys: { key: TranslationKey; href: string }[] = [
+  { key: "nav.home", href: "#home" },
+  { key: "nav.about", href: "#about" },
+  { key: "nav.services", href: "#services" },
+  { key: "nav.differentials", href: "#differentials" },
+  { key: "nav.contact", href: "#contact" },
 ];
 
 export default function Header() {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -29,7 +32,6 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center h-20">
-        {/* Logo */}
         <a href="#home" className="flex items-center gap-3 group">
           <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-headline font-extrabold text-lg group-hover:scale-105 transition-transform">
             UM
@@ -44,32 +46,30 @@ export default function Header() {
           </div>
         </a>
 
-        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {navKeys.map((link) => (
             <a
               key={link.href}
               href={link.href}
               className="text-sm text-on-surface-variant hover:text-on-surface transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
-              {link.label}
+              {t(link.key)}
             </a>
           ))}
         </nav>
 
-        {/* CTA Button */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher />
           <a
             href="#quote"
             className="hidden md:inline-flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-primary-light transition-all duration-300 hover:scale-[1.02] active:scale-95"
           >
-            Pedir Orçamento
+            {t("nav.cta")}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
 
-          {/* Mobile toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="lg:hidden flex flex-col gap-1.5 p-2"
@@ -82,21 +82,20 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-500 ${
           mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <nav className="bg-surface-container/95 backdrop-blur-xl border-t border-outline-variant/10 px-6 py-6 flex flex-col gap-4">
-          {navLinks.map((link) => (
+          {navKeys.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
               className="text-on-surface-variant hover:text-on-surface transition-colors py-2 text-lg"
             >
-              {link.label}
+              {t(link.key)}
             </a>
           ))}
           <a
@@ -104,7 +103,7 @@ export default function Header() {
             onClick={() => setMobileOpen(false)}
             className="bg-primary text-white px-6 py-3 rounded-lg font-semibold text-center mt-2"
           >
-            Pedir Orçamento
+            {t("nav.cta")}
           </a>
         </nav>
       </div>
