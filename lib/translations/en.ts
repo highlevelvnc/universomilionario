@@ -136,7 +136,7 @@ const en: Record<TranslationKey, string> = {
 
   // Contact email
   "contact.email.label": "Email",
-  "contact.email.value": "geral@universomilionario.pt",
+  "contact.email.value": "geral.universomilionario@gmail.com",
 
   // Testimonials
   "test.tag": "Testimonials",

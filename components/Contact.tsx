@@ -27,7 +27,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-bold text-lg mb-1">{t("contact.office")}</p>
-                  <p className="text-on-surface-variant leading-relaxed">R. Guilherme Gomes Fernandes, n22A<br />Amadora, 2725-627 Portugal</p>
+                  <p className="text-on-surface-variant leading-relaxed">R. Guilherme Gomes Fernandes, n22A<br />Amadora, 2700-446 Portugal</p>
                 </div>
               </div>
               <div className="flex items-start gap-5">
@@ -46,7 +46,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-bold text-lg mb-1">{t("contact.email.label")}</p>
-                  <p className="text-on-surface-variant"><a href="mailto:geral@universomilionario.pt" className="hover:text-primary transition-colors">{t("contact.email.value")}</a></p>
+                  <p className="text-on-surface-variant"><a href="mailto:geral.universomilionario@gmail.com" className="hover:text-primary transition-colors">{t("contact.email.value")}</a></p>
                 </div>
               </div>
               <div className="flex items-start gap-5">

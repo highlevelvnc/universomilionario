@@ -134,7 +134,7 @@ const pt = {
 
   // Contact email
   "contact.email.label": "E-mail",
-  "contact.email.value": "geral@universomilionario.pt",
+  "contact.email.value": "geral.universomilionario@gmail.com",
 
   // Testimonials
   "test.tag": "Testemunhos",

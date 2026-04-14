@@ -30,7 +30,7 @@ export default function PrivacyPage() {
         <div className="prose prose-invert prose-lg max-w-none space-y-8 text-on-surface-variant leading-relaxed">
           <section>
             <h2 className="text-2xl font-bold text-on-surface mb-4">1. Responsável pelo Tratamento</h2>
-            <p>A <strong className="text-on-surface">Universo Milionário LDA</strong>, com sede na R. Guilherme Gomes Fernandes, n22A, Amadora, 2725-627, é a entidade responsável pelo tratamento dos dados pessoais recolhidos através deste website.</p>
+            <p>A <strong className="text-on-surface">Universo Milionário LDA</strong>, com sede na R. Guilherme Gomes Fernandes, n22A, Amadora, 2700-446, é a entidade responsável pelo tratamento dos dados pessoais recolhidos através deste website.</p>
           </section>
 
           <section>
@@ -81,7 +81,7 @@ export default function PrivacyPage() {
               <li>Portabilidade dos dados</li>
               <li>Retirar o consentimento a qualquer momento</li>
             </ul>
-            <p className="mt-3">Para exercer estes direitos, contacte-nos através do e-mail <strong className="text-on-surface">geral@universomilionario.pt</strong> ou pelo telefone 964 456 526.</p>
+            <p className="mt-3">Para exercer estes direitos, contacte-nos através do e-mail <strong className="text-on-surface">geral.universomilionario@gmail.com</strong> ou pelo telefone 964 456 526.</p>
           </section>
 
           <section>
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-2xl font-bold text-on-surface mb-4">9. Contacto</h2>
             <p>Para qualquer questão relativa à proteção dos seus dados:</p>
-            <p className="mt-2"><strong className="text-on-surface">Universo Milionário LDA</strong><br />R. Guilherme Gomes Fernandes, n22A, Amadora, 2725-627<br />E-mail: geral@universomilionario.pt<br />Telefone: 964 456 526</p>
+            <p className="mt-2"><strong className="text-on-surface">Universo Milionário LDA</strong><br />R. Guilherme Gomes Fernandes, n22A, Amadora, 2700-446<br />E-mail: geral.universomilionario@gmail.com<br />Telefone: 964 456 526</p>
           </section>
         </div>
       </main>

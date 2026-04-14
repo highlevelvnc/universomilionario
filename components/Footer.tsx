@@ -56,7 +56,7 @@ export default function Footer() {
             <h4 className="text-[11px] uppercase tracking-[0.25em] font-bold text-primary mb-6">{t("footer.contacts")}</h4>
             <div className="space-y-3 text-on-surface-variant text-sm">
               <p>R. Guilherme Gomes Fernandes, n22A</p>
-              <p>Amadora, 2725-627</p>
+              <p>Amadora, 2700-446</p>
               <p className="pt-2"><a href="tel:+351964456526" className="hover:text-on-surface transition-colors">964 456 526</a> / <a href="tel:+351933058761" className="hover:text-on-surface transition-colors">933 058 761</a></p>
               <p><a href="tel:+351216039832" className="hover:text-on-surface transition-colors">216 039 832</a></p>
             </div>

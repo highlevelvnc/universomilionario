@@ -81,12 +81,12 @@ export default function RootLayout({
       "Empresa de construção civil e limpezas profissionais em Portugal e na União Europeia.",
     url: SITE_URL,
     telephone: ["+351964456526", "+351933058761", "+351216039832"],
-    email: "geral@universomilionario.pt",
+    email: "geral.universomilionario@gmail.com",
     address: {
       "@type": "PostalAddress",
       streetAddress: "R. Guilherme Gomes Fernandes, n22A",
       addressLocality: "Amadora",
-      postalCode: "2725-627",
+      postalCode: "2700-446",
       addressCountry: "PT",
     },
     geo: {
